@@ -1,0 +1,187 @@
+.task-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow: var(--shadow-md);
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.task-card:hover {
+    transform: translateZ(30px) rotateX(8deg) rotateY(8deg);
+    box-shadow: var(--shadow-xl);
+}
+
+.task-card:hover::before {
+    opacity: 0.05;
+}
+
+.task-header {
+    padding: 0.75rem 0;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.task-status {
+    font-weight: 600;
+    transform: translateZ(15px);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    transition: all 0.4s ease;
+}
+
+.task-status.completed {
+    color: white;
+    background: var(--success-gradient);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+
+.task-body {
+    transform-style: preserve-3d;
+    padding: 0.5rem 0;
+}
+
+.task-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    transform: translateZ(20px);
+    transition: all 0.4s ease;
+    line-height: 1.4;
+}
+
+.task-title.completed {
+    text-decoration: line-through;
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.task-date {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    transform: translateZ(15px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.task-date::before {
+    content: '🕒';
+    font-size: 1rem;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    transform-style: preserve-3d;
+    gap: 1rem;
+}
+
+.task-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    text-align: center;
+}
+
+.task-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.task-button:hover {
+    transform: translateZ(15px);
+    box-shadow: var(--shadow-md);
+}
+
+.delete-button {
+    background: var(--error-gradient);
+    color: white;
+}
+
+.delete-button:hover {
+    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+}
+
+.complete-button {
+    background: var(--success-gradient);
+    color: white;
+}
+
+.complete-button:hover {
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+
+.complete-button.completed {
+    background: var(--text-light);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@keyframes taskComplete {
+    0% {
+        transform: scale(1) translateZ(0);
+    }
+    50% {
+        transform: scale(1.05) translateZ(20px);
+        box-shadow: var(--shadow-xl);
+    }
+    100% {
+        transform: scale(1) translateZ(0);
+    }
+}
+
+.task-complete-animation {
+    animation: taskComplete 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes taskDelete {
+    0% {
+        transform: translateX(0) translateZ(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) translateZ(0);
+        opacity: 0;
+    }
+}
+
+.task-delete-animation {
+    animation: taskDelete 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+} 
