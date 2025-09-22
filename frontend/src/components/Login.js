@@ -3,7 +3,7 @@ import { login } from '../services/api'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from './Main/Header';
+
 const Login = () => {
 
 
@@ -80,8 +80,6 @@ const Login = () => {
 
     return (
         <>
-            <Header />
-
             <div className='container'>
                 <ToastContainer />
                 <div className="row justify-content-center mt-4 ">

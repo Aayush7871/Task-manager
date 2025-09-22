@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Main/Header";
 import Task from "./Main/Task";
 import TaskModal from "./Main/TaskModal";
 import { getTaskList, getToken } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ searchText, setSearchText }) => {
   const navigate = useNavigate();
 
   const [tasklist, setTasklist] = useState([]);
   const [refereshList, setrefereshList] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   const [filteredList, setSetFilteredList] = useState([]);
   console.log(tasklist, filteredList);
@@ -54,8 +52,6 @@ const Home = () => {
 
   return (
     <>
-      <Header searchText={searchText} setSearchText={setSearchText} />
-
       <div className="container">
         <div className="row justify-content-md-center mt-4">
           {filteredList?.map((task) => {

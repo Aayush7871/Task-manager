@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { register } from '../services/api.js';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import Header from './Main/Header.js';
 
 const Register = ({ user, setUser }) => {
 
@@ -55,7 +54,6 @@ const Register = ({ user, setUser }) => {
 
     return (
         <>
-            <Header />
             <div className='container'>
                 <ToastContainer />
                 <div className="row justify-content-md-center mt-4">
